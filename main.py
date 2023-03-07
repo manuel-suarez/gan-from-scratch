@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import torch as nn
 from typing import List, Tuple
 
 def create_binary_list_from_int(number: int) -> List[int]:
@@ -23,3 +24,13 @@ def generate_even_data(max_int: int, batch_size: int=16) -> Tuple[List[int], Lis
     data = [([0] * (max_length - len(x))) + x for x in data]
 
     return labels, data
+
+class Generator(nn.Module):
+    def __init___(self, input_length: int):
+        super(Generator, self).__init__()
+        self.dense_layer = nn.Linear(int(input_length), int(input_length))
+        self.activation = nn.Sigmoid()
+
+    def forward(self, x):
+        return self.activation(self.dense_layer(x))
+
