@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import torch
-import torch as nn
+import torch.nn as nn
 from typing import List, Tuple
 
 def create_binary_list_from_int(number: int) -> List[int]:
